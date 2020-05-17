@@ -1,0 +1,21 @@
+#0 docker info, docker version
+
+# 1. windows container
+docker run dockeronwindows/ch01-whale
+
+# 2. sample linux container 
+docker container run -it alpine
+
+#3. nginx server
+docker run --detach --publish 80:80 --name webserver nginx
+
+docker container ls
+
+docker rm -v -f $(docker ps -qa)
+
+
+#compose
+c:\git\eticd_2019\demos\02_docker\docker-compose\
+docker-compose down
+
+docker-compose up

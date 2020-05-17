@@ -1,0 +1,11 @@
+ components:
+   - component: LazyService
+     config:
+      serviceName: 
+       DEV: LazyServiceDEV
+       PROD: LazyService
+   - component: LazyDB
+     config:
+      connectionstring:
+       DEV: Server=localhost\SQLEXPRESS; Database=lazydbDEV; Integrated Security=False;User Id=sa;Password=secretpassword;
+       PROD: Server=localhost\SQLEXPRESS; Database=lazydb; Integrated Security=False;User Id=sa;Password=secretpassword;

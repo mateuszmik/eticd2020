@@ -1,0 +1,36 @@
+version: '3.3'
+
+services:
+ notesqueue:
+  image: nats
+  ports:
+   - "8222:8222"
+  networks:
+   - notesapp-net 
+
+ notesweb:
+  image: dockernotes-core/notesweb
+  build:
+   context: notesweb
+  ports:
+   - "80:80"
+  depends_on:
+   - processingservice
+  networks:
+   - notesapp-net
+  env_file:
+   - dockernotes.env
+   
+ processingservice:
+  image: dockernotes-core/processingservice
+  build:
+   context: processingservice
+  depends_on:
+   - notesqueue
+  networks:
+   - notesapp-net
+  env_file:
+   - dockernotes.env
+   
+networks:
+  notesapp-net:
